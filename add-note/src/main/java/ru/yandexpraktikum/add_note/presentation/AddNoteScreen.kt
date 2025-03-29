@@ -1,4 +1,4 @@
-package ru.yandexpraktikum.add_note.presentation;
+package ru.yandexpraktikum.add_note.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
