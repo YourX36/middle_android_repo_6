@@ -12,8 +12,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.rememberNavController
 import ru.yandexpraktikum.notekeeper.presentation.navigation.NoteKeeperNavHost
 import ru.yandexpraktikum.core_ui.presentation.theme.NoteKeeperTheme
+import ru.yandexpraktikum.notekeeper.di.ApplicationComponent
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var appComponent: ApplicationComponent
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,10 +26,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    appComponent = (LocalContext.current.applicationContext as NoteKeeperApp).appComponent
                     val navController = rememberNavController()
-                    val container = (LocalContext.current.applicationContext as NoteKeeperApp).container
                     NoteKeeperNavHost(
-                        appContainer = container,
+                        appComponent = appComponent,
                         navController = navController
                     )
                 }
